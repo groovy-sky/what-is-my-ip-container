@@ -1,9 +1,9 @@
 FROM golang:1.19-alpine as base
 
-RUN go build main.go && cmod +x main
+RUN install github.com/groovy-sky/what-is-my-ip-container/v2@latest
 
-FROM alpine:latest
+FROM scratch:latest
 
-COPY --from=base main /main
+COPY --from=base /go/bin/what-is-my-ip-container /main
 
 ENTRYPOINT ["/main"]
