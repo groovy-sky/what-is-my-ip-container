@@ -6,7 +6,7 @@ WORKDIR /app
 COPY . .  
   
 RUN go mod download  
-RUN CGO_ENABLED=0 GOOS=linux go build -o /bin/what-is-my-ip-container ./v2  
+RUN CGO_ENABLED=0 GOOS=linux go build -o /bin/what-is-my-ip-container .  
   
 # Stage 2: create a minimal image with the built binary  
 FROM scratch  
